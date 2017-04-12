@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * @author sih
  */
@@ -40,18 +42,27 @@ public class ACRAdaptorTest {
     @Before
     public void setUp() throws IOException {
 
-        LOGGER.info(System.getProperty("java.library.path"));
-
         String workingDir = System.getProperty("user.dir")+"/src/test/resources";
-        LOGGER.info(workingDir);
-
         dbSnippet = Files.readAllBytes(Paths.get(workingDir, dbmp3));
+        viaPhoneSnippet = Files.readAllBytes(Paths.get(workingDir, viaPhoneM4a));
+    }
+
+    @Test
+    public void recognizeShouldHandleMp3Files() throws Exception {
+        SimpleResult result = adaptor.recognize(dbSnippet);
+        assertEquals("Success", result.getStatus());
+        assertEquals("Dueling Banjos", result.getTrack());
+        assertEquals("Western Story", result.getAlbum());
 
     }
 
     @Test
-    public void recognize() throws Exception {
-        adaptor.recognize(dbSnippet);
+    public void recognizeShouldHandleM4aRecordings() throws Exception {
+        SimpleResult result = adaptor.recognize(viaPhoneSnippet);
+        assertEquals("Success", result.getStatus());
+        assertEquals("Ultralight Beam", result.getTrack());
+        assertEquals("The Life Of Pablo", result.getAlbum());
+
     }
 
 }

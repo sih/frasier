@@ -1,8 +1,14 @@
 package eu.waldonia.labs.frasier.api;
 
 import com.acrcloud.utils.ACRCloudRecognizer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 /**
  * @author sih
@@ -10,12 +16,38 @@ import org.springframework.stereotype.Service;
 @Service
 public class ACRAdaptor {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ACRAdaptor.class);
+
     @Autowired
     private ACRCloudRecognizer recognizer;
 
     SimpleResult recognize(byte[] inputSnippet) {
 
         SimpleResult result = new SimpleResult();
+
+        String acrResult = recognizer.recognizeByFileBuffer(inputSnippet, inputSnippet.length, 0);
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+
+            LOGGER.info(acrResult);
+
+            JsonNode root = mapper.readTree(acrResult);
+            JsonNode status = root.get("status").get("msg");
+            JsonNode album = root.get("metadata").get("music").get(0).get("album").get("name");
+            JsonNode title = root.get("metadata").get("music").get(0).get("title");
+
+            result.setAlbum(album.textValue());
+            result.setTrack(title.textValue());
+            result.setStatus(status.textValue());
+
+        }
+        catch (IOException ioe) {
+            LOGGER.error(ioe.getMessage());
+        }
+
+
+
 
         return result;
     }
