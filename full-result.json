@@ -1,0 +1,74 @@
+{
+  "status": {
+    "msg": "Success",
+    "code": 0,
+    "version": "1.0"
+  },
+  "metadata": {
+    "music": [{
+      "external_ids": {
+        "isrc": "USUM71603065",
+        "upc": "602547793386"
+      },
+      "play_offset_ms": 35900,
+      "release_date": "2016-04-04",
+      "artists": [{
+        "name": "Kanye West"
+      }, {
+        "name": "Chance The Rapper"
+      }, {
+        "name": "Kirk Franklin"
+      }, {
+        "name": "The-Dream"
+      }, {
+        "name": "Kelly Price"
+      }],
+      "label": "环球唱片",
+      "external_metadata": {
+        "deezer": {
+          "album": {
+            "id": "12753212"
+          },
+          "artists": [{
+            "id": "230"
+          }],
+          "track": {
+            "id": "121926960"
+          }
+        },
+        "spotify": {
+          "album": {
+            "id": "7gsWAHLeT0w7es6FofOXk1"
+          },
+          "artists": [{
+            "id": "5K4W6rqBFWDnAN6FQUkS6x"
+          }],
+          "track": {
+            "id": "1eQBEelI2NCy7AUTerX0KS"
+          }
+        },
+        "itunes": {
+          "album": {
+            "id": 1123231885
+          },
+          "artists": [{
+            "id": 2715720
+          }],
+          "track": {
+            "id": 1123232221
+          }
+        }
+      },
+      "title": "Ultralight Beam",
+      "duration_ms": 320731,
+      "album": {
+        "name": "The Life Of Pablo"
+      },
+      "acrid": "be6bd71066cee65c5975ca2f497bb124",
+      "result_from": 3,
+      "score": 100
+    }],
+    "timestamp_utc": "2017-04-12 07:43:00"
+  },
+  "result_type": 3
+}

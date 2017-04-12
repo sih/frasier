@@ -1,0 +1,7 @@
+-- mvn install:install-file -Dfile=./mac/x86-64/libs/commons-codec-1.10.jar -DgroupId=com.acrcloud.sdk.java -DartifactId=commons-codec -Dversion=1.10 -Dpackaging=jar
+
+
+
+mvn install:install-file -Dfile=./mac/x86-64/libs-so/libacrcloud_extr_tool.dylib -DgroupId=com.acrcloud.sdk.java -DartifactId=acrcloud-extr-tool-mac -Dversion=1.10 -Dpackaging=jar
+
+mvn install:install-file -Dfile=./mac/x86-64/libs-so/libacrcloud_extr_tool.dylib -DgroupId=com.acrcloud.sdk.java -DartifactId=acrcloud-extr-tool-linux -Dversion=1.10 -Dpackaging=jar
